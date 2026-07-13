@@ -212,6 +212,7 @@
   .brands-grid{
     display:grid; grid-template-columns:1.15fr 0.85fr; gap:56px; align-items:center;
   }
+  .brands-grid > *{ min-width:0; }
   .brands-image{
     position:relative;
     border-radius:var(--radius);
@@ -304,19 +305,25 @@
 
   /* ---------- CONTACT ---------- */
   .contact-grid{display:grid; grid-template-columns:1fr 1fr; gap:56px;}
+  .contact-grid > *{ min-width:0; }
   .contact-list{display:flex; flex-direction:column; gap:22px; margin-top:26px;}
   .contact-item{
     display:flex; gap:16px; align-items:flex-start; padding:18px;
     border:1px solid var(--line); border-radius:12px; background:var(--panel);
     transition:border-color .25s ease;
+    width:100%;
   }
   .contact-item:hover{border-color:var(--amber-dim);}
   .contact-item .ic{
     font-family:var(--mono); font-size:0.7rem; color:var(--amber);
     border:1px solid var(--amber-dim); border-radius:6px; padding:6px 8px; flex-shrink:0;
   }
+  .contact-item > div{ flex:1 1 auto; min-width:0; }
   .contact-item a, .contact-item span{font-size:0.94rem;}
-  .contact-item small{display:block; color:var(--muted); font-size:0.74rem; margin-top:2px; font-family:var(--mono); letter-spacing:0.05em;}
+  .contact-item a{
+    display:inline-block; word-break:break-word; overflow-wrap:break-word; max-width:100%;
+  }
+  .contact-item small{display:block; color:var(--muted); font-size:0.74rem; margin-top:2px; font-family:var(--mono); letter-spacing:0.05em; word-break:break-word;}
 
   .cta-panel{
     background:linear-gradient(160deg, var(--panel), var(--panel-2));
@@ -343,6 +350,15 @@
     .burger{display:flex;}
     .contact-grid{grid-template-columns:1fr;}
     .foot-grid{grid-template-columns:1fr; gap:26px;}
+  }
+
+  @media (max-width:480px){
+    .wrap{ padding:0 18px; }
+    .section{ padding:70px 0; }
+    .cta-panel{ padding:26px; }
+    .contact-item{ padding:14px; gap:12px; }
+    .brand-logo{ padding:12px 18px; font-size:0.92rem; }
+    .stat-panel{ grid-template-columns:1fr 1fr; gap:18px; padding:22px; }
   }
 
   /* ---------- WHATSAPP FLOATING BUTTON ---------- */
