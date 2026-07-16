@@ -4,6 +4,9 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>MediaHouseAutomation — Smart Home & Media Systems</title>
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
+<link rel="icon" type="image/png" sizes="192x192" href="favicon-192.png">
+<link rel="apple-touch-icon" href="favicon-192.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -304,7 +307,7 @@
   .service-card:hover::before{ opacity:1; }
 
   /* ---------- CONTACT ---------- */
-  .contact-grid{display:grid; grid-template-columns:1fr 1fr; gap:56px;}
+  .contact-grid{display:grid; grid-template-columns:1fr 1fr; gap:56px; align-items:start;}
   .contact-grid > *{ min-width:0; }
   .contact-list{display:flex; flex-direction:column; gap:22px; margin-top:26px;}
   .contact-item{
@@ -329,6 +332,10 @@
     background:linear-gradient(160deg, var(--panel), var(--panel-2));
     border:1px solid var(--line); border-radius:var(--radius); padding:38px;
     display:flex; flex-direction:column; justify-content:center;
+    position:relative; overflow:hidden;
+  }
+  @media (min-width:861px){
+    .cta-panel{ max-height:340px; }
   }
   .cta-panel h3{font-size:1.5rem; margin-bottom:12px;}
   .cta-panel p{color:var(--muted); margin-bottom:24px;}
@@ -416,7 +423,7 @@
 <main>
   <!-- HERO -->
   <section class="hero" id="home">
-    <video class="hero-video" autoplay muted loop playsinline poster="assets/hero-poster.jpg">
+    <video class="hero-video" autoplay muted loop playsinline>
       <source src="video2.mp4" type="video/mp4">
     </video>
     <div class="hero-overlay"></div>
@@ -673,12 +680,11 @@
   counters.forEach(c => countObserver.observe(c));
 
   // Background video: fall back gracefully if the source file isn't present yet
-  const heroVideo = document.querySelector('.hero-video');
-  if (heroVideo) {
-    heroVideo.addEventListener('error', () => {
-      heroVideo.style.display = 'none';
+  document.querySelectorAll('.hero-video').forEach(video => {
+    video.addEventListener('error', () => {
+      video.style.display = 'none';
     }, true);
-  }
+  });
 
 </script>
 
